@@ -1,0 +1,321 @@
+// Online Java Compiler (Editor)
+// Write and run Java online using this editor.
+import java.util.*;
+class Main {
+    // public static int basicCalculator(String s){
+    //     Stack<Integer> stk=new Stack<>();
+    //     int res=0;
+    //     int num=0;
+    //     int sign=1;
+    //     for(int i=0;i<s.length();i++){
+    //         char ch=s.charAt(i);
+    //         if(Character.isDigit(ch)){
+    //             num=num*10+(ch-'10');
+    //         }
+    //         else if(ch=='+'){
+    //             res+=sign*num;
+    //             num=0;
+    //             sign=1;
+    //         }else if(ch=='-'){
+    //             res+=sign*num;
+    //             num=0;
+    //             sign=-1;
+    //         }else if(ch=='('){
+    //             stk.push(res);
+    //             stk.push(sign);
+    //             sign=1; // we r just starting with + sign immediately when we enter into ()
+    //             res=0; // res to 0
+    //         }else if(ch==')'){
+    //             res+=num*sign;
+                
+    //             int prevSign=stk.pop();
+    //             int prevRes=stk.pop();
+                
+    //             res=res*prevSign+prevRes;
+    //         }
+    //     }
+    //     res+=sign*num;
+    //     return res;
+    // }
+    // public static int longValidParentheses(String str){
+    //     Stack<Integer> stk=new Stack<>();
+    //     maxLen=0;
+    //     stk.push(-1);
+    //     for(int i=0;i<str.length();i++){
+    //         char ch=str.chatAt(i);
+    //         if(ch=='(') stk.push(i);
+    //         else{
+    //             stk.pop();
+    //             if(stk.isEmpty()){
+    //                 stk.push(i);
+    //             }else{
+    //                 int len=i-stk.peek();
+    //                 maxLen=Math.max(len,maxLen);
+                    
+    //             }
+    //         }
+    //     }
+    // }
+    class Node{
+        int data;
+        Node next;
+        
+        Node(int data){
+            this.data=data;
+            next=null;
+        }
+    }
+    // public static Node buildLL(int val,Node head,Node tail){
+        
+    //     Node newNode= new Node(val);
+    //     if(head==null){
+    //         head=newNode;
+    //         tail=newNode;
+    //     }else{
+    //         tail.next=newNode;
+    //         tail=newNode;
+    //     }
+    //     return head;
+    // }
+    public static Node buildLL(int n,Scanner sc){
+        Node head=null;
+        Node tail=null;
+        for(int i=0;i<n;i++){
+            int val=sc.nextInt();
+            Node newNode=new Node(val);
+            
+            if(head==null){
+                head=newNode;
+                tail=newNode;
+            }else{
+                tail.next=newNode;
+                tail=newNode;
+            }
+        }
+        return head;
+    }
+    public static void printLL(Node thala){
+        Node temp=thala;
+        while(temp!=null){
+            System.out.print(temp.data + " -> ");
+            temp=temp.next;
+        }
+        System.out.print(null);
+        
+    }
+    // public static Node addNumber(Node head1,Node head2){
+    //     Node dummy=new Node(0);
+    //     Node curr=dummy;
+    //     int sum=0;
+    //     int carry=0;
+    //     while(head1!=null || head2!=null || carry>0){
+    //         int sum=carry; // int sum inside the loop bez we need to res everytime when we go into new traversal
+    //         if(head1!=null){
+    //             sum+=head1.data;
+    //             head1=head1.next;
+    //         }
+    //         if(head2!=null){//we have go through list head2 even if we have gone through list head1
+    //             sum+=head2.data;
+    //             head2=head2.next;
+    //         }
+    //         carry=sum/10;
+    //         Node newNode=new Node(sum%10);
+    //         curr.next=newNode;
+    //         curr=curr.next;
+    //     }
+    //     return dummy.next;
+    // }
+    // public static Node partition(Node head1,int x){
+    //     Node beforeHead=new Node(0);
+    //     Node afterHead=new Node(0);
+    //     Node before = beforeHead;
+    //     Node after = afterHead;
+        
+    //     Node temp=head;
+    //     while(temp!=null){
+    //         if(temp.data<x){
+    //             before.next=temp;
+    //             before=before.next;
+    //         }else{
+    //             after.next=temp;
+    //             after=after.next;
+    //         }
+    //         temp=temp.next;
+    //     }
+    //     after.next=null;
+    //     before.next=afterHead.next;
+    //     return beforeHead.next;
+    // }
+    // class myStack{
+    //     Queue<Long> stk=new LinkedList<>();
+    //     Queue<Long> minStack=new LinkedList<>();
+    //     static void push(int val){
+    //         stk.push(val);
+    //         if(minStack.isEmpty() || minStack.peek() > val){
+    //             minStack.push(val);
+    //         }
+    //     }
+    //     static Long pop(){
+    //         if(stk.isEmpty) return -1L;
+    //         Long topPopped=stk.pop();
+    //         if(topPopped==minStack.peek()){
+    //             minStack.pop();
+    //         }
+    //         return topPopped;
+    //     }
+    //     static Long top(){
+    //         if(stk.isEmpty()) return -1L;
+    //         return stk.peek();
+    //     }
+    //     static Long minElement(){
+    //         if(minStack.isEmpty()) return -1L;
+    //         return minStack.peek();
+    //     }
+        
+        
+    // }
+    // public static String minRemoval(String s){
+    //     Stack<Integer> stk=new Stack<>();
+    //     Set<Integer> set=new HashSet<>();
+        
+    //     for(int i=0;i<s.length();i++){
+    //         char ch=s.charAt(i);
+    //         if(ch=='('){
+    //             stk.push(i);
+    //         }else{
+    //             if(stk.isEmpty()) set.add(i);
+    //             else{
+    //                 stk.pop();
+    //             }
+    //         }
+    //     }
+    //     while(!stk.isEmpty()){
+    //         set.add(stk.pop());
+    //     }
+    //     StringBuilder sb= new StringBuilder();
+    //     for(int i=0;i<n;i++){
+    //         if(!set.contains(i)){
+    //             sb.append(s.charAt(i));
+    //         }
+    //     }
+    //     return sb.toString();
+    // }
+    // public static int evalRevPolish(String[] tokens){
+    //     int a=0;
+    //     int res=0;
+    //     int b=0;
+    //     Stack<Integer> stk=new Stack<>();
+    //     for(String token:tokens){
+    //         if(token.equals("+")){
+    //             b=stk.pop();
+    //             a=stk.pop();
+    //             res=a+b;
+    //             stk.push(res);
+    //         }
+    //         else if(token.equals("-")){
+    //             b=stk.pop();
+    //             a=stk.pop();
+    //             res=a-b;
+    //             stk.push(res);
+    //         }
+    //         else if(token.equals("*")){
+    //             b=stk.pop();
+    //             a=stk.pop();
+    //             res=a*b;
+    //             stk.push(res);
+    //         }else if(token.equals("/")){
+    //             b=stk.pop();
+    //             a=stk.pop();
+    //             res=a/b;
+    //             stk.push(res);
+    //         }else{
+    //             int val=Integer.parseInt(token);
+    //             stk.push(val);
+    //         }
+    //     }
+    //     return stk.peek();
+    // }
+    // public static String minKDigits(String num,int k){
+    //     Deque<Character> stk=new ArrayDeque<>();
+    //     // for(int i=0;i<n;i++){
+    //     //     char digit=num.charAt(i);
+    //     //     while()
+            
+    //     // }
+    //     for(char digit:num.toCharArray()){
+    //         while(!stk.isEmpty() && k>0 && stk.peekLast() > digit){
+    //             stk.removeLast();
+    //             k--;
+    //         }
+    //         stk.addLast(digit);
+    //     }
+    //     while(!stk.isEmpty() && k>0){
+    //         stk.removeLast();
+    //         k--;
+    //     }
+    //     int i=0;
+        
+    //     StringBuilder sb=new StringBuilder();
+    //     while(!stk.isEmpty()){
+    //         sb.append(stk.removeFirst());
+    //     }
+    //     while( i<sb.length()&& sb.charAt(i)=='0'){
+    //         i++;
+    //     }
+    //     return sb.substring(i).toString();
+    // }
+    class myStack{
+        Queue<Long> queue=new LinkedList<>();
+        
+        void push(long val){
+            queue.offer(val);
+            
+            int n=queue.size();
+            for(int i=0;i<n-1;i++){
+                queue.offer(queue.poll());
+            }
+        }
+        long pop(){
+           if(queue.isEmpty()){
+               return -1L;
+           } 
+           return queue.poll();
+        }
+        long top(){
+            if(queue.isEmpty()){
+               return -1L;
+           } 
+           return queue.peek();
+        }
+        boolean isEmpty(){
+            return queue.isEmpty();
+        }
+    }
+    
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        myStack stack=new myStack();
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++){
+            String command=sc.next();
+            if(command.equals("push")){
+                long val=sc.nextLong();
+                stack.push(val);
+            }
+            else if(command.equals("pop")){
+                System.out.println(stack.pop());
+            }else if(command.equals("top")){
+                System.out.println(stack.top());
+            }
+            else if(command.equals("isEmpty")){
+                System.out.println(stack.isEmpty());
+            }
+        }
+        // int n=sc.nextInt();
+        // Node head1=buildLL(n,sc);
+        // Node head2=buildLL(n,sc);
+        // Node resLL=addNumber(head1,head2);
+        // print(resLL);
+        
+    }
+}
