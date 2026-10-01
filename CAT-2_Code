@@ -237,11 +237,6 @@ class Main {
     // }
     // public static String minKDigits(String num,int k){
     //     Deque<Character> stk=new ArrayDeque<>();
-    //     // for(int i=0;i<n;i++){
-    //     //     char digit=num.charAt(i);
-    //     //     while()
-            
-    //     // }
     //     for(char digit:num.toCharArray()){
     //         while(!stk.isEmpty() && k>0 && stk.peekLast() > digit){
     //             stk.removeLast();
